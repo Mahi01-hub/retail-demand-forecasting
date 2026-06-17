@@ -10,7 +10,7 @@ import numpy as np
 
 # ---------------- PAGE CONFIG ----------------
 model = joblib.load(
-    "retail_demand_forecasting_model.pkl"
+    "retail_model_xz.pkl"
 )
 st.set_page_config(
     page_title="AI Retail Demand Forecasting",
