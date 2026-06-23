@@ -97,17 +97,26 @@ if lottie_ai:
 # ---------------- SIDEBAR ----------------
 st.sidebar.title("⚙️ Controls")
 
-store = st.sidebar.number_input(
-    "🏬 Store Number",
-    min_value=1,
-    max_value=45,
-    value=1
+store = st.sidebar.selectbox(
+    "🏬 Select Store",
+    [
+        "Walmart Chicago",
+        "Walmart Texas",
+        "Walmart California",
+        "Walmart New York",
+        "Walmart Florida"
+    ]
 )
 
-dept = st.sidebar.number_input(
-    "📦 Department Number",
-    min_value=1,
-    value=1
+dept = st.sidebar.selectbox(
+    "📦 Department",
+    [
+        "Electronics",
+        "Groceries",
+        "Fashion",
+        "Home & Kitchen",
+        "Sports"
+    ]
 )
 
 holiday = st.sidebar.selectbox(
@@ -274,16 +283,40 @@ with tab1:
             }
         ))
 
-        st.plotly_chart(
-            fig,
-            use_container_width=True
-        )
+       # Gauge Meter
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
 
-    else:
+st.subheader("📈 Historical Sales Trend")
 
-        st.info(
-            "⬅️ Enter details from the sidebar and click 'Predict Sales'."
-        )
+history_df = pd.DataFrame({
+    "Week": [
+        "Week 1",
+        "Week 2",
+        "Week 3",
+        "Week 4"
+    ],
+    "Sales": [
+        predicted_sales-4000,
+        predicted_sales-2500,
+        predicted_sales-1000,
+        predicted_sales
+    ]
+})
+
+st.dataframe(history_df)
+
+st.line_chart(
+    history_df.set_index("Week")
+)
+
+else:
+
+    st.info(
+        "⬅️ Enter details from the sidebar and click 'Predict Sales'."
+    )
 
 # ---------------- ANALYTICS ----------------
 with tab2:
