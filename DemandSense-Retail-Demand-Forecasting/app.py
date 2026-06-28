@@ -99,25 +99,23 @@ st.sidebar.title("⚙️ Controls")
 
 store = st.sidebar.selectbox(
     "🏬 Select Store",
-    [
-        "Walmart Chicago",
-        "Walmart Texas",
-        "Walmart California",
-        "Walmart New York",
-        "Walmart Florida"
-    ]
-)
+    store_mapping = {
+    "Walmart Chicago": 1,
+    "Walmart Texas": 2,
+    "Walmart California": 3,
+    "Walmart New York": 4,
+    "Walmart Florida": 5
+}
 
 dept = st.sidebar.selectbox(
     "📦 Department",
-    [
-        "Electronics",
-        "Groceries",
-        "Fashion",
-        "Home & Kitchen",
-        "Sports"
-    ]
-)
+    dept_mapping = {
+    "Electronics": 1,
+    "Groceries": 2,
+    "Fashion": 3,
+    "Home & Kitchen": 4,
+    "Sports": 5
+}
 
 holiday = st.sidebar.selectbox(
     "🎉 Is Holiday?",
@@ -133,10 +131,12 @@ temperature = st.sidebar.slider(
 if st.button("🚀 Predict Sales"):
 
     holiday_value = 1 if holiday == "Yes" else 0
+    store_id = store_mapping[store]
+    dept_id = dept_mapping[dept]
 
     input_data = np.array([
-        [store, dept, holiday_value, temperature]
-    ])
+    [store_id, dept_id, holiday_value, temperature]
+])
 
     predicted_sales = model.predict(input_data)[0]
 
