@@ -135,9 +135,9 @@ if st.sidebar.button("🚀 Predict Sales"):
 
     holiday_value = 1 if holiday == "Yes" else 0
 
-    input_data = np.array([
-        [store, dept, holiday_value]
-    ])
+   input_data = np.array([
+    [store, dept, holiday_value, temperature]
+])
 
     predicted_sales = model.predict(
         input_data
