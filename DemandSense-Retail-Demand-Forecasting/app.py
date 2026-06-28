@@ -288,30 +288,28 @@ st.plotly_chart(
     fig,
     use_container_width=True
 )
+        st.subheader("📈 Historical Sales Trend")
 
-st.subheader("📈 Historical Sales Trend")
+        history_df = pd.DataFrame({
+            "Week": [
+                "Week 1",
+                "Week 2",
+                "Week 3",
+                "Week 4"
+            ],
+            "Sales": [
+                predicted_sales-4000,
+                predicted_sales-2500,
+                predicted_sales-1000,
+                predicted_sales
+            ]
+        })
 
-history_df = pd.DataFrame({
-    "Week": [
-        "Week 1",
-        "Week 2",
-        "Week 3",
-        "Week 4"
-    ],
-    "Sales": [
-        predicted_sales-4000,
-        predicted_sales-2500,
-        predicted_sales-1000,
-        predicted_sales
-    ]
-})
+        st.dataframe(history_df)
 
-st.dataframe(history_df)
-
-st.line_chart(
-    history_df.set_index("Week")
-)
-
+        st.line_chart(
+            history_df.set_index("Week")
+        )
 else:
 
     st.info(
