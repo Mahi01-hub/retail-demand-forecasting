@@ -282,12 +282,12 @@ with tab1:
                 ]
             }
         ))
+        # Gauge Meter
+        st.plotly_chart(
+            fig,
+            use_container_width=True
+        )
 
-       # Gauge Meter
-st.plotly_chart(
-    fig,
-    use_container_width=True
-)
         st.subheader("📈 Historical Sales Trend")
 
         history_df = pd.DataFrame({
@@ -298,9 +298,9 @@ st.plotly_chart(
                 "Week 4"
             ],
             "Sales": [
-                predicted_sales-4000,
-                predicted_sales-2500,
-                predicted_sales-1000,
+                predicted_sales - 4000,
+                predicted_sales - 2500,
+                predicted_sales - 1000,
                 predicted_sales
             ]
         })
@@ -310,11 +310,12 @@ st.plotly_chart(
         st.line_chart(
             history_df.set_index("Week")
         )
-else:
 
-    st.info(
-        "⬅️ Enter details from the sidebar and click 'Predict Sales'."
-    )
+    else:
+
+        st.info(
+            "⬅️ Enter details from the sidebar and click 'Predict Sales'."
+        )
 
 # ---------------- ANALYTICS ----------------
 with tab2:
