@@ -130,18 +130,15 @@ temperature = st.sidebar.slider(
     100.0,
     70.0
 )
-
-if st.sidebar.button("🚀 Predict Sales"):
+if st.button("🚀 Predict Sales"):
 
     holiday_value = 1 if holiday == "Yes" else 0
 
-   input_data = np.array([
-    [store, dept, holiday_value, temperature]
-])
+    input_data = np.array([
+        [store, dept, holiday_value, temperature]
+    ])
 
-    predicted_sales = model.predict(
-        input_data
-    )[0]
+    predicted_sales = model.predict(input_data)[0]
 
     if predicted_sales > 30000:
         inventory_risk = "High"
